@@ -1,0 +1,10 @@
+.runno-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.runno-signup-form {
+    width: 35%;
+}

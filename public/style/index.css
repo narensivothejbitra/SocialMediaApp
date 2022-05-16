@@ -1,0 +1,70 @@
+@import 'signup.css';
+@import "signin.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.logo {
+    font-size: 24px;
+    line-height: 2;
+}
+
+.logo:first-letter {
+    font-size: 1.8rem;
+    color: lightcoral;
+}
+
+.runno-header {
+    position: sticky;
+    z-index: 2;
+    background: #fff;
+    top: 0;
+}
+
+.runno-suggestion-section {
+    position: fixed;
+    top: 14%;
+    right: 0;
+}
+
+.runno-main {
+    background: #eff2f6;
+}
+
+.runno-card-img {
+    height: 400px;
+}
+
+.runno-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-comments {
+    padding: 1.2rem 0;
+    padding-top: 3rem;
+}
+
+
+.comment-list-group .list-group-item {
+    border: none;
+    padding: 0;
+}
+
+.comment-user-img {
+    width: 32px;
+    height: 32px;
+}
+
+.post-create-modal .modal-dialog {
+    max-width: 700px;
+}
+
+.post-content {
+    height: 200px !important;
+}

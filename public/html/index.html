@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style/index.css">
+</head>
+<body>
+
+<header class="runno-header p-3 border-bottom">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-center justify-content-lg-between">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <span class="logo">
+                    Runno
+                </span>
+            </a>
+
+
+            <form id="search_form" class="position-relative col-6 mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" id="search_users" >
+                <div id="search_results" class="position-absolute top-50">
+
+                </div>
+            </form>
+
+            <div id="user_actions" class="dropdown text-end">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <img id="avatar_img" src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                    <li><a type="button" data-bs-target="#post_modal" data-bs-toggle="modal" class="dropdown-item" href="#">New Post</a></li>
+                    <li><a class="dropdown-item" data-bs-target="#edit_user_modal" data-bs-toggle="modal" href="#">Edit profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li id="logout_btn"><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="runno-main">
+    <div class="container">
+        <div class="row">
+            <!--            Posts           -->
+            <section class="runno-posts-section col-md-7">
+                <div id="posts_list" class="row row-cols-md-1 g-3">
+                </div>
+            </section>
+            <!--    sidebar suggestion section        -->
+            <aside class="runno-suggestion-section col-md-5">
+                <div id="suggestion-alert-container"></div>
+                <div id="suggestion_list" class="list-group w-75">
+                    <a id="user_info" href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+
+                    </a>
+                    <h3 class="fs-6 fw-bold opacity-50 mt-3">Suggestion for you</h3>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+</main>
+
+<!-- Modal -->
+<div class="modal fade post-create-modal" id="post_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="post_form" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Post to your feed</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert-container">
+
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" accept="image/jpeg, image/png, image/jpg" id="images" name="images" required>
+                    <label class="input-group-text" for="images">
+                        Upload image to post
+                    </label>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control post-content" placeholder="Leave a comment here" id="content"
+                              name="content"
+                              required
+
+                    ></textarea>
+                    <label for="content">Post content</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" id="post_submit_btn" class="btn btn-primary">Post</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade post-create-modal" id="edit_user_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="edit_user_form" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit your info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="edit-user-alert-container">
+
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" accept="image/jpeg, image/png, image/jpg" id="avatar" name="avatar" required>
+                    <label class="input-group-text" for="images">
+                        Upload image to post
+                    </label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="full_name" name="full_name">
+                    <label for="content">Full name</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="delete_user" class="btn btn-danger">Delete forever</button>
+                <button type="submit" id="edit_submit_btn" class="btn btn-primary">Edit info</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script type="module" src="js/index.js"></script>
+</body>
+</html>
