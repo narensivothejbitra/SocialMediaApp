@@ -18,7 +18,7 @@ The app has been ended as expected. But, it is decided that there will be big ch
 #Bugs and problems around IBLOG app
 About bug and problems, it is hard to handle DOM elements when they are iterated by forEach method. Fetching data takes some time to deliver complete 
 data 
-into app.
+into app
 
 #Technologies used in the project
 
